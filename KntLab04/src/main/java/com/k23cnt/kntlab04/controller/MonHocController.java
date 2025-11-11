@@ -41,7 +41,7 @@ public class MonHocController {
             monHocService.save(monHocDTO);
             return ResponseEntity.ok("Monhoc with id " + id + " updated successfully!");
         }
-        return ResponseEntity.badRequest().body("Id in body is not correct!");
+        return ResponseEntity.badRequest().body("Id is not correct!");
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(String id) {
