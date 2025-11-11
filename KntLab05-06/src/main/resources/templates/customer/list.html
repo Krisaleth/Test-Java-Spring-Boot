@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<body>
+<div layout:fragment="content">
+    <h1 class="mb-4">Danh sách khách hàng</h1>
+
+    <!-- Nút thêm mới -->
+    <a href="/customer/create" class="btn btn-primary mb-3">Thêm mới</a>
+
+    <!-- Bảng hiển thị -->
+    <div class="table-responsive" >
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>Tên người dùng</th>
+                <th>Mật khẩu</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Họ và tên</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.username}">Tên người dùng</td>
+                <td th:text="${customer.password}">Mật khẩu</td>
+                <td th:text="${customer.email}">Email</td>
+                <td th:text="${customer.phoneNumber}">Số điện thoại</td>
+                <td th:text="${customer.fullname}">Họ và tên</td>
+                <td th:text="${customer.birthday}">Ngày sinh</td>
+                <td th:text="${customer.address}">Địa chỉ</td>
+                <td th:text="${customer.active ? 'Active' : 'Inactive'}">Trạng thái</td>
+                <td>
+                    <!-- Nút Edit -->
+                    <a th:href="@{/customer/edit/{id}(id=${customer.id})}" class="btn btn-sm btn-warning">Sửa</a>
+                    <!-- Nút Delete -->
+                    <a th:href="@{/customer/delete/{id}(id=${customer.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">Xoá</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

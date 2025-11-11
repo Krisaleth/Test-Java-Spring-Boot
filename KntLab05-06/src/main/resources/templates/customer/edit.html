@@ -1,0 +1,61 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<body>
+<div class="container mt-5" layout:fragment="content">
+    <h2 class="mb-4">Sửa khách hàng</h2>
+    <form action="/customer/update" method="POST">
+        <input type="hidden" name="id" th:value="${customer.id}" />
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Tên người dùng</label>
+            <input type="text" class="form-control" id="username" name="username" th:field="${customer.username}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Mật khẩu</label>
+            <input type="password" class="form-control" id="password" name="password" th:field="${customer.password}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" th:field="${customer.email}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Số điện thoại</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" th:field="${customer.phoneNumber}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="fullname" class="form-label">Họ và tên</label>
+            <input type="text" class="form-control" id="fullname" name="fullname" th:field="${customer.fullname}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="birthday" class="form-label">Ngày sinh</label>
+            <input type="date" class="form-control" id="birthday" name="birthday" th:field="${customer.birthday}" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="address" class="form-label">Địa chỉ</label>
+            <input type="text" class="form-control" id="address" name="address" th:field="${customer.address}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="active" class="form-label">Trạng thái</label>
+            <select class="form-select" id="active" name="active" th:field="${customer.active}">
+                <option value="true">Hoạt động</option>
+                <option value="false">Không hoạt động</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+        <a href="/customer/list" class="btn btn-secondary">Hủy</a>
+    </form>
+
+</div>
+</body>
+</html>
+
+
+
